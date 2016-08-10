@@ -11,13 +11,111 @@
     <script src="css/bootstrap.min.js"></script> -->
 </head>
 <body>
+<script>
+function validate_form() 
+{
+    var x = document.forms["customerform"]["cName"].value;
+    var z = document.forms["customerform"]["cNo"].value;
+    var b = document.forms["customerform"]["eMail"].value;
+    var c = document.forms["customerform"]["budget"].value;
+    var d = document.forms["customerform"]["aRevenue"].value;
+    var e = document.forms["customerform"]["rDate"].value;
+    if (x == null || x == "") 
+    {
+        alert("Customer Name must be filled out");
+        return false;
+    }
+    else if (z == null || z == "") 
+	{
+        alert("Customer Number must be filled out");
+        return false;
+    }
+    else if (b == null || b == "") 
+    {
+        alert("Please enter your Email ID");
+        return false;
+    }
+    else if (c == null || c == "") 
+    {
+        alert("Please enter your Budget");
+        return false;
+    }
+    else if (d == null || d == "") 
+    {
+        alert("Please enter your Annual Revenue");
+        return false;
+    }    
+    else if (e == null || e == "") 
+    {
+            alert("Please select date to Remainder");
+            return false;
+    }
+   /*  var y = document.getElementById("refer");
+    var strUser = y.options[y.selectedIndex].value;
+    var strUser1 = y.options[y.selectedIndex].text;
+   
+    else if(strUser=="Select")
+    {
+        alert("Please select a referrer");
+        return false;
+    } */
+}
+</script>  
+<!-- 	
+	
+	var a = document.getElementById("project");
+    var strUser2 = a.options[a.selectedIndex].value;
+    var strUser3 = a.options[a.selectedIndex].text;
+    else if(strUser2==0)
+    {
+        alert("Please select a Project name");
+    }
+	
+	
+	
+	else if(document.getElementById("emp").checked == false)
+		{
+	else if(document.getElementById("semp").checked == false)
+				{
+					alert("Please select Customer Status");
+				}
+		}
+	
+	
+	}
+	else if(document.getElementById("yesradio").checked == false)
+	{
+	else if(document.getElementById("noradio").checked == false)
+			{
+				alert("Please select Existing Loans");
+			}
+	}
+	else if(document.getElementById("cradio").checked == false)
+	{
+	else if(document.getElementById("pradio").checked == false)
+			{
+				alert("Please select Customer Type");
+			}
+	}
+	else if(document.getElementById("hradio").checked == false)
+	{
+	else if(document.getElementById("coradio").checked == false)
+			{
+	else if(document.getElementById("wradio").checked == false)
+				{
+					alert("Please select Customer type");
+				}
+				
+			}
+	}
+	 -->
 	<div id="header2">
 		<div>
 			<div class="logo">
 				<a href="index.html"></a>
 			</div>
 			<ul id="navigation">
-				<li>
+				<li> 
 					<a href="marketing.html">Marketing</a>
 				</li>
 				<li class="active">
@@ -37,12 +135,14 @@
 	</div>
 	
 <br>
-<div class="container">
+<!-- <form action='DB_connection.php' method='post'> -->
+<form name="customerform">
+<div class="container"> 
 	
   <div class="row">
     <div class="col-md-8">Customer Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name='cName' id='cName'></div>
-    <div class="col-md-4">Referred by:&nbsp; 
-	     <select>
+    <div class="col-md-4" id='refer'>Referred by:&nbsp; 
+	     <select name='referredBy'>
 	        <option selected>Select</option>
 	        <option>Campaign</option>
 	        <option>Television</option>
@@ -53,9 +153,9 @@
   </div><br>
   
   <div class="row">
-    <div class="col-md-8">Customer Number:&nbsp;<input type="text" name='cName' id='cName'><button class="myButton2" type="sumbit">Search</button></div>
+    <div class="col-md-8">Customer Number:&nbsp;<input type="text" name='cNo' id='cNo'><button class="myButton2" type="button">Search</button></div>
     <div class="col-md-4">Project:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	     <select>
+	     <select name='projectName' id='project'>
 	        <option selected>Select</option>
 	        <option>Sonigara</option>
 	        <option>Megapolis</option>
@@ -66,104 +166,113 @@
   </div><br>
   
   <div class="row">
-    <div class="col-md-8">E-Mail Id:&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<input type="text" name='cName' id='cName'></div>
-    <div class="col-md-4">Budget:&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&nbsp;<input type="text" name='cName' id='cName'></div>
+    <div class="col-md-8">E-Mail Id:&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<input type="text" name='eMail' id='eMail'></div>
+    <div class="col-md-4">Budget:&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&nbsp;<input type="text" name='budget' id='budget'></div>
   </div><br>
   
   <div class="row">
-    <div class="col-md-8">Address:&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<br><textarea rows='5' cols='50'></textarea></div>
+    <div class="col-md-8">Address:&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<br><textarea rows='5' cols='50' name='addr'></textarea></div>
     <div class="col-md-4">
-	     <input type="checkbox" id="cb1" name="cb" value="">
-	<label for="cb1">Prospect to Customer</label>
+	     <input type="checkbox" id="prospToCust" name="prospToCust" value="Yes">
+	<label for="prospToCust">Prospect to Customer</label>
 	 </div>
   </div>
   <hr>
 															<!-- Customer status -->
 	<div class="row">
-	<div class="col-md-7">Customer Status:</div>
-	<div class="col-md-5">Annual Revenue:&nbsp;&nbsp;&emsp;&emsp;&emsp;<input type="text" name='aRevenue' id='aRevenue'></div>
-	</div>
-	<!-- radio buttons -->
-	<div class="radio">
-	<div class="col-md-5">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-	    <label><input type="radio" name="emp">Employee</label>
-	 </div>
-	</div>
-	<br>
-	<div class="row">
-	<div class="col-md-5">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-	    <label><input type="radio" name="semp">Self-Employed</label>
-	 </div>
-	</div> <br>
+	<div class="col-md-5">Customer Status:
+		&emsp;&emsp;<input type="radio" id="emp" name="emp" value="Employee">
+		<label for="emp">Employee</label><br>
+		&nbsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<input type="radio" id="semp" name="emp" value="Self-Employed">
+		<label for="semp">Self-Employed</label><br></div>
+	<div class="col-md-7">Annual Revenue:&nbsp;&nbsp;&emsp;&emsp;&emsp;<input type="text" name='aRevenue' id='aRevenue'></div>
+	</div><br>
+	
 																		<!-- Loans -->
 	<div class="row">
-	<div class="col-md-7">Existing Loans:</div>
-	<div class="col-md-5">Type of loan:</div><br>
+	<div class="col-md-5">Existing Loans:&emsp;&emsp;&emsp;&nbsp;&nbsp;<input type="radio" id="yesradio" name="LoanYesNo" value="Yes">
+		<label for="yesradio">Yes</label><br>&nbsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="radio" id="noradio" name="LoanYesNo" value="No">
+		<label for="noradio">No</label><br></div>
+	<div class='col-md-7'>
+<!-- sample code -->
+<script>
+function listbox_moveacross(sourceID, destID) {
+	var src = document.getElementById("loanlist");
+	var dest = document.getElementById("selectedloan");
+
+	for(var count=0; count < src.options.length; count++) {
+
+		if(src.options[count].selected == true) {
+				var option = src.options[count];
+
+				var newOption = document.createElement("option");
+				newOption.value = option.value;
+				newOption.text = option.text;
+				newOption.selected = true;
+				try {
+						 dest.add(newOption, null); //Standard
+						 src.remove(count, null);
+				 }catch(error) {
+						 dest.add(newOption); // IE only
+						 src.remove(count);
+				 }
+				count--;
+		}
+	}
+}
+</script>
+<!-- ends here -->
+	<div class="col-md-3">List of Loans:&emsp;&emsp;&emsp;&nbsp;
+	     <br><select size='5' id='loanlist'>
+	     
+	        <option>Home Loan</option>
+	        <option>Car Loan</option>
+	        <option>Personal Loan</option>
+	        <option>Pre Approved Loan</option>
+	    </select>
+	 </div>
+	<!--  <div class="col-md-1">
+	    <br><br><br><button class="myButton2" onclick = "listbox_moveacross(loanlist, selectedlist)">></button>
+	 </div> -->
+	<div class="col-md-5">Selected Loans:&emsp;&emsp;&emsp;&nbsp;&nbsp;
+	     <br><select size='5' id = 'selectedloan' name='listofLoans[]' multiple>
+	       <option value="Home Loan">Home Loan</option>
+	        <option value="Car Loan">Car Loan</option>
+	        <option value="Personal Loan">Personal Loan</option>
+	        <option value="Pre Approved Loan">Pre Approved Loan</option>
+	    </select>
+	 </div>
+	</div>	
 	</div>
-	<div class="row">
-	<div class="radio">
-	<div class="col-md-5">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-      <label><input type="radio" name="yesradio">Yes</label>
-    </div>
-	</div>
-	<!-- List box code goes here -->
-	</div>
-	<div class="row">
-	<div class="radio">
-	<div class="col-md-5">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-      <label><input type="radio" name="noradio">No</label>
-    </div>
-	</div>
-	</div>
+	
 <hr>
 <!-- Type -->
 <div class="row">
-<div class="col-md-7">Type:</div>
-<div class="col-md-5">Customer Status:</div>
+<div class="col-md-5">Type:<input type="radio" id="cradio" name="cradio" value="Customer">
+		&emsp;&emsp;&emsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&emsp;<label for="cradio">Customer</label><br>
+		<input type="radio" id="pradio" name="cradio" value="Prospect">
+		&emsp;&emsp;&emsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<label for="pradio">Prospect</label></div>
+		
+<div class="col-md-7">Customer Status:&emsp;&emsp;<input type="radio" id="hradio" name="custStatus" value="Hot">
+		<label for="hradio">Hot</label>&emsp;&emsp;&emsp;<input type="radio" id="coradio" name="custStatus" value="Cold">
+		<label for="coradio">Cold</label>&emsp;&emsp;&emsp;<input type="radio" id="wradio" name="custStatus" value="Warm">
+		<label for="wradio">Warm</label></div>
 </div>
-<div class="row">
-<div class="radio">
-	<div class="col-md-7">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-      <label><input type="radio" name="cradio">Customer</label>
-    </div>
-</div>
-<div class="radio">
-	<div class="col-md-5">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-      <label><input type="radio" name="hradio">Hot</label>
-    </div>
-</div>
-</div>
-<div class="row">
-<div class="radio">
-	<div class="col-md-7">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-      <label><input type="radio" name="pradio">prospect</label>
-    </div>
-</div>
-<div class="radio">
-	<div class="col-md-5">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-      <label><input type="radio" name="coradio">Cold</label>
-    </div>
-</div>
-</div>
-<div class="row">
-<div class="col-md-7">&nbsp;</div>
-<div class="radio">
-	<div class="col-md-5">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-      <label><input type="radio" name="wradio">Warm</label>
-    </div>
-</div>
-</div>
+
+
 <hr>
 <!-- Notes -->
 <div class="row">
-<div class="col-md-8">Notes:&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<br><textarea rows='5' cols='50'></textarea></div>
+<div class="col-md-8">Notes:&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<br><textarea rows='5' cols='50' name='notes'></textarea></div>
 <div class="col-md-4">Remainder Date:&nbsp;&nbsp;&emsp;&emsp;&emsp;<input type="date" name='rDate' id='rDate'></div>
+<br><br><br><br><button class="myButton" onclick = "validate_form()"  type="submit">Submit</button>
 </div>
 <br>
-	
-	<!-- Footer -->
-	
-<div id="footer">
+	</div>
+</form>
+															<!-- Footer -->
+ 	<div id="footer">
 		<div class="clearfix">
 			<div id="connect">
 				<a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a><a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a><a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a><a href="http://www.freewebsitetemplates.com/misc/contact/" target="_blank" class="tumbler"></a>
