@@ -5,110 +5,116 @@
 	<meta charset="UTF-8">
 	<title>HMS-Customer Info</title>
 	
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="bootstrap.min.css" type="text/css">
 	<!-- <link rel="stylesheet" href="css/style.css">
     <script src="css/jquery.min.js"></script>
     <script src="css/bootstrap.min.js"></script> -->
 </head>
 <body>
 <script>
-function validate_form() 
+function validate_cname() 
 {
     var x = document.forms["customerform"]["cName"].value;
-    var z = document.forms["customerform"]["cNo"].value;
-    var b = document.forms["customerform"]["eMail"].value;
-    var c = document.forms["customerform"]["budget"].value;
-    var d = document.forms["customerform"]["aRevenue"].value;
-    var e = document.forms["customerform"]["rDate"].value;
-    if (x == null || x == "") 
+	if (x == null || x == "") 
     {
         alert("Customer Name must be filled out");
         return false;
     }
-    else if (z == null || z == "") 
+}
+function validate_cno() 
+{
+    var z = document.forms["customerform"]["cNo"].value;
+	if (z == null || z == "") 
 	{
         alert("Customer Number must be filled out");
         return false;
     }
-    else if (b == null || b == "") 
+}
+function validate_email() 
+{
+    var b = document.forms["customerform"]["eMail"].value;;
+	if (b == null || b == "") 
     {
         alert("Please enter your Email ID");
         return false;
     }
-    else if (c == null || c == "") 
+}
+function validate_budget() 
+{
+var c = document.forms["customerform"]["budget"].value;
+if (c == null || c == "") 
     {
         alert("Please enter your Budget");
         return false;
     }
-    else if (d == null || d == "") 
+}
+function validate_arevenue() 
+{
+var d = document.forms["customerform"]["aRevenue"].value
+if (d == null || d == "") 
     {
         alert("Please enter your Annual Revenue");
         return false;
     }    
-    else if (e == null || e == "") 
+}
+function validate_rdate() 
+{
+var e = document.forms["customerform"]["rDate"].value;
+if (e == null || e == "") 
     {
             alert("Please select date to Remainder");
             return false;
     }
-   /*  var y = document.getElementById("refer");
-    var strUser = y.options[y.selectedIndex].value;
-    var strUser1 = y.options[y.selectedIndex].text;
-   
-    else if(strUser=="Select")
-    {
-        alert("Please select a referrer");
-        return false;
-    } */
 }
-</script>  
-<!-- 	
-	
-	var a = document.getElementById("project");
+function validate_refer()
+{
+var y = document.getElementById("refer");
+	var strUser = y.options[y.selectedIndex].value;
+	var strUser1 = y.options[y.selectedIndex].text;
+	if(strUser==0)
+    {
+        alert("Please select Referrer Name");
+    }
+}
+function validate_project()
+{
+var a = document.getElementById("project");
     var strUser2 = a.options[a.selectedIndex].value;
     var strUser3 = a.options[a.selectedIndex].text;
-    else if(strUser2==0)
+	if(strUser2==0)
     {
         alert("Please select a Project name");
     }
-	
-	
-	
-	else if(document.getElementById("emp").checked == false)
-		{
-	else if(document.getElementById("semp").checked == false)
-				{
-					alert("Please select Customer Status");
-				}
-		}
-	
-	
-	}
-	else if(document.getElementById("yesradio").checked == false)
+}
+function validate_cstatus()
+{
+if ( ( document.getElementById("emp").checked == false ) && ( document.getElementById("semp").checked == false ) )
 	{
-	else if(document.getElementById("noradio").checked == false)
-			{
-				alert("Please select Existing Loans");
-			}
+		alert ( "Please choose Customer status" ); 
 	}
-	else if(document.getElementById("cradio").checked == false)
+}
+function validate_eloans()
+{
+if ( ( document.getElementById("yesradio").checked == false ) && ( document.getElementById("noradio").checked == false ) )
 	{
-	else if(document.getElementById("pradio").checked == false)
-			{
-				alert("Please select Customer Type");
-			}
+		alert ( "Please choose Existing loans" ); 
 	}
-	else if(document.getElementById("hradio").checked == false)
+}
+function validate_ctype()
+{
+if ( ( document.getElementById("cradio").checked == false ) && ( document.getElementById("pradio").checked == false ) )
 	{
-	else if(document.getElementById("coradio").checked == false)
-			{
-	else if(document.getElementById("wradio").checked == false)
-				{
-					alert("Please select Customer type");
-				}
-				
-			}
+		alert ( "Please choose Type of customer" ); 
 	}
-	 -->
+}
+function validate_status()
+{
+if ( ( document.getElementById("hradio").checked == false ) && ( document.getElementById("cradio").checked == false && ( document.getElementById("wradio").checked == false ) )
+	{
+		alert ( "Please choose Customer status" ); 
+	}
+}
+</script>
 	<div id="header2">
 		<div>
 			<div class="logo">
@@ -140,14 +146,16 @@ function validate_form()
 <div class="container"> 
 	
   <div class="row">
+  
     <div class="col-md-8">Customer Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name='cName' id='cName'></div>
-    <div class="col-md-4" id='refer'>Referred by:&nbsp; 
-	     <select name='referredBy'>
-	        <option selected>Select</option>
-	        <option>Campaign</option>
-	        <option>Television</option>
-	        <option>News Paper</option>
-	        <option>Friend</option>
+	
+	<div class="col-md-4">Referred by:&nbsp; 
+	     <select name='referredBy' id='refer' onclick = "validate_cstatus()">
+	        <option value="0" selected>Select</option>
+	        <option value="1">Campaign</option>
+	        <option value="2">Television</option>
+	        <option value="3">News Paper</option>
+	        <option value="4">Friend</option>
 	    </select>
 	 </div>
   </div><br>
@@ -156,11 +164,11 @@ function validate_form()
     <div class="col-md-8">Customer Number:&nbsp;<input type="text" name='cNo' id='cNo'><button class="myButton2" type="button">Search</button></div>
     <div class="col-md-4">Project:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	     <select name='projectName' id='project'>
-	        <option selected>Select</option>
-	        <option>Sonigara</option>
-	        <option>Megapolis</option>
-	        <option>Magarpatta</option>
-	        <option>Nanded City</option>
+	        <option value="0" selected>Select</option>
+	        <option value="1">Sonigara</option>
+	        <option value="2">Megapolis</option>
+	        <option value="3">Magarpatta</option>
+	        <option value="4">Nanded City</option>
 	    </select>
 	 </div>
   </div><br>
@@ -225,8 +233,7 @@ function listbox_moveacross(sourceID, destID) {
 <!-- ends here -->
 	<div class="col-md-3">List of Loans:&emsp;&emsp;&emsp;&nbsp;
 	     <br><select size='5' id='loanlist'>
-	     
-	        <option>Home Loan</option>
+	     <option>Home Loan</option>
 	        <option>Car Loan</option>
 	        <option>Personal Loan</option>
 	        <option>Pre Approved Loan</option>
@@ -266,7 +273,7 @@ function listbox_moveacross(sourceID, destID) {
 <div class="row">
 <div class="col-md-8">Notes:&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<br><textarea rows='5' cols='50' name='notes'></textarea></div>
 <div class="col-md-4">Remainder Date:&nbsp;&nbsp;&emsp;&emsp;&emsp;<input type="date" name='rDate' id='rDate'></div>
-<br><br><br><br><button class="myButton" onclick = "validate_form()"  type="submit">Submit</button>
+<br><br><br><br><button class="myButton" onclick = "validate_form()">Submit</button>
 </div>
 <br>
 	</div>
