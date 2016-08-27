@@ -12,107 +12,63 @@
 </head>
 <body>
 <script>
-function validate_cname() 
+function validate_form()
 {
-    var x = document.forms["customerform"]["cName"].value;
+
+	var x = document.forms["customerform"]["cName"].value;
+	var z = document.forms["customerform"]["cNo"].value;
+	var b = document.forms["customerform"]["eMail"].value;
+	var atpos = b.indexOf("@");
+    var dotpos = b.lastIndexOf(".");
+	var c = document.forms["customerform"]["budget"].value;
+	var d = document.forms["customerform"]["aRevenue"].value;
+	var e = document.forms["customerform"]["rDate"].value;
+	var y = document.getElementById("refer");
+	var strUser = y.options[y.selectedIndex].value;
+	var strUser1 = y.options[y.selectedIndex].text;
+	var a = document.getElementById("project");
+    var strUser2 = a.options[a.selectedIndex].value;
+    var strUser3 = a.options[a.selectedIndex].text;
 	if (x == null || x == "") 
     {
         alert("Customer Name must be filled out");
-        return false;
+        return false
     }
-}
-function validate_cno() 
-{
-    var z = document.forms["customerform"]["cNo"].value;
-	if (z == null || z == "") 
+	else if (z == null || z == "") 
 	{
         alert("Customer Number must be filled out");
-        return false;
+        return false
     }
-}
-function validate_email() 
-{
-    var b = document.forms["customerform"]["eMail"].value;;
-	if (b == null || b == "") 
+	else if(z.length != 10 || isNaN(z))
+	{
+		alert("Phone number is Incorrect");
+		return false
+	}
+	else if (b == null || b == "") 
     {
         alert("Please enter your Email ID");
+        return false
+    }
+	else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=b.length) 
+	{
+        alert("Not a valid e-mail address");
         return false;
     }
-}
-function validate_budget() 
-{
-var c = document.forms["customerform"]["budget"].value;
-if (c == null || c == "") 
+	else if (c == null || c == "") 
     {
         alert("Please enter your Budget");
-        return false;
+        return false
     }
-}
-function validate_arevenue() 
-{
-var d = document.forms["customerform"]["aRevenue"].value
-if (d == null || d == "") 
+	else if (d == null || d == "") 
     {
         alert("Please enter your Annual Revenue");
-        return false;
-    }    
-}
-function validate_rdate() 
-{
-var e = document.forms["customerform"]["rDate"].value;
-if (e == null || e == "") 
+        return false
+    } 
+	else if (e == null || e == "") 
     {
             alert("Please select date to Remainder");
-            return false;
+            return false
     }
-}
-function validate_refer()
-{
-var y = document.getElementById("refer");
-	var strUser = y.options[y.selectedIndex].value;
-	var strUser1 = y.options[y.selectedIndex].text;
-	if(strUser==0)
-    {
-        alert("Please select Referrer Name");
-    }
-}
-function validate_project()
-{
-var a = document.getElementById("project");
-    var strUser2 = a.options[a.selectedIndex].value;
-    var strUser3 = a.options[a.selectedIndex].text;
-	if(strUser2==0)
-    {
-        alert("Please select a Project name");
-    }
-}
-function validate_cstatus()
-{
-if ( ( document.getElementById("emp").checked == false ) && ( document.getElementById("semp").checked == false ) )
-	{
-		alert ( "Please choose Customer status" ); 
-	}
-}
-function validate_eloans()
-{
-if ( ( document.getElementById("yesradio").checked == false ) && ( document.getElementById("noradio").checked == false ) )
-	{
-		alert ( "Please choose Existing loans" ); 
-	}
-}
-function validate_ctype()
-{
-if ( ( document.getElementById("cradio").checked == false ) && ( document.getElementById("pradio").checked == false ) )
-	{
-		alert ( "Please choose Type of customer" ); 
-	}
-}
-function validate_status()
-{
-if ( ( document.getElementById("hradio").checked == false ) && ( document.getElementById("cradio").checked == false && ( document.getElementById("wradio").checked == false ) )
-	{
-		alert ( "Please choose Customer status" ); 
-	}
 }
 </script>
 	<div id="header2">
@@ -150,8 +106,8 @@ if ( ( document.getElementById("hradio").checked == false ) && ( document.getEle
     <div class="col-md-8">Customer Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name='cName' id='cName'></div>
 	
 	<div class="col-md-4">Referred by:&nbsp; 
-	     <select name='referredBy' id='refer' onclick = "validate_cstatus()">
-	        <option value="0" selected>Select</option>
+	     <select name='referredBy' id='refer'>
+	        <option value="0">Select</option>
 	        <option value="1">Campaign</option>
 	        <option value="2">Television</option>
 	        <option value="3">News Paper</option>
@@ -273,7 +229,12 @@ function listbox_moveacross(sourceID, destID) {
 <div class="row">
 <div class="col-md-8">Notes:&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<br><textarea rows='5' cols='50' name='notes'></textarea></div>
 <div class="col-md-4">Remainder Date:&nbsp;&nbsp;&emsp;&emsp;&emsp;<input type="date" name='rDate' id='rDate'></div>
-<br><br><br><br><button class="myButton" onclick = "validate_form()">Submit</button>
+<form action="D:\bt00333212\ATT" method="post" enctype="multipart/form-data">
+        <input type="file" name="filename" />
+        <input type="submit" value="Upload" />
+    </form>
+
+<br><br><br><br><button class="myButton2" onclick="return validate_form()">Submit</button>
 </div>
 <br>
 	</div>
